@@ -1,15 +1,15 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/utils/supabase/server'
-import LoginForm from './LoginForm'
+import SignupForm from './SignUpForm'
 
-export default async function LoginPage() {
+
+export default async function SignupPage() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
-  // Zaten giriş yapmışsa dashboard'a yönlendir
   if (user) {
     redirect('/dashboard')
   }
 
-  return <LoginForm />
+  return <SignupForm />
 }
